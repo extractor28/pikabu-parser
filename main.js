@@ -19,7 +19,7 @@ const poptext = (e) => {
 
 const worker = async (query = null, page = 1, param = '') => {
     try {
-        query = query ? `tag/${encodeURIComponent(query.split(' ').join('.'))}/` : '';
+        query = encodeURIComponent(query);
 
         let url = `https://pikabu.ru/${query}hot?${param}page=${page}`;
         let data = iconv.decode(await (await fetch(url)).buffer(), 'windows-1251');
